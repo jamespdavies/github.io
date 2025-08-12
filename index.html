@@ -1,16 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Landing Page</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #fafafa; }
-    h1 { color: #333; }
-    p { font-size: 18px; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      color: #333;
+    }
+    img.logo {
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    p.tagline {
+      font-size: 1.2rem;
+      color: #666;
+      margin: 10px 0 30px;
+    }
+    a.email {
+      font-size: 1rem;
+      color: #007acc;
+      text-decoration: none;
+    }
+    a.email:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <h1>Welcome to The Website</h1>
-  <p>This is my first GitHub Pages site. Hosted for free!</p>
+  <img src="i.png" alt="Company Logo" class="logo">
+  <h1>Singular Machines</h1>
+  <p class="tagline">Engineering Re-Engineered</p>
+  <p>Contact: <a class="email" href="mailto:james@singularmachines.co.uk">james@singularmachines.com</a></p>
 </body>
 </html>

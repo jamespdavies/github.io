@@ -1,116 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Singular Machines</title>
   <style>
-    :root {
-      /* Fluid sizes (min, preferred vw-based, max) */
-      --size-name: clamp(2.4rem, 10vw, 7rem);
-      --size-tag:  clamp(1rem, 4.5vw, 2.5rem);
-      --size-ctc:  clamp(0.95rem, 3.2vw, 1.5rem);
+    :root{
+      /* Tweak this to your exact brand blue */
+      --brand-blue: #55c1e8;            /* <— replace with your icon’s hex */
+      /* Fluid type scale */
+      --size-name: clamp(2.6rem, 10vw, 7.6rem);
+      --size-tag:  clamp(1.15rem, 4vw,  2.4rem);
+      --size-ctc:  clamp(1rem,  3vw,   1.6rem);
+      /* Vertical rhythm (multiples) */
+      --rhythm: clamp(12px, 2.4vmin, 24px);
     }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-
-    body {
+    html, body { height: 100%; margin: 0; }
+    body{
       font-family: Arial, sans-serif;
-      background: #fff;
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden; /* Stops tiny overflow from showing scrollbars */
-      padding: 0 16px; /* Horizontal breathing room */
+      color:#000; background:#fff;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center;
+      overflow:hidden;                 /* avoid phantom scrollbars */
+      padding: 0 16px;                 /* horizontal breathing room */
     }
 
-    /* Prevent selection on branding */
-    .company-name, .tagline {
-      user-select: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
+    main{ display:flex; flex-direction:column; align-items:center; gap: calc(var(--rhythm) * 1.25); }
+
+    /* Non-selectable branding */
+    .company-name,.tagline{
+      user-select:none; -webkit-user-select:none; -ms-user-select:none;
     }
 
-    .company-name {
-      font-size: var(--size-name);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: 0.01em;
+    .company-name{
+      font-size:var(--size-name);
+      font-weight:800;
+      line-height:1.04;                 /* tight, logo-like */
+      letter-spacing:0.01em;
     }
 
-    /* Inline “i” image tied directly to text size */
-    .company-name img.i-logo {
-      height: 0.75em; /* always 75% of text height */
-      width: auto;
-      vertical-align: -0.12em;
-      user-select: none;
-      -webkit-user-drag: none;
-      pointer-events: none;
+    /* Inline “i” icon — tied to text size and baseline-aligned */
+    .company-name img.i-logo{
+      height:0.78em;                    /* visual match to your PNG */
+      width:auto;
+      display:inline-block;
+      vertical-align:-0.14em;           /* baseline nudge */
+      user-select:none; -webkit-user-drag:none; pointer-events:none;
     }
 
-    .tagline {
-      margin: 14px 0 36px;
-      font-style: italic;
-      color: #555;
-      font-size: var(--size-tag);
+    .tagline{
+      font-size:var(--size-tag);
+      font-style:italic;
+      color:#666;
+      margin-top: calc(var(--rhythm) * 0.25);   /* subtle, even rhythm */
     }
 
-    p.contact {
-      margin: 6px 0 0;
-      font-size: var(--size-ctc);
+    .contact{
+      margin-top: calc(var(--rhythm) * 0.25);
+      font-size:var(--size-ctc);
     }
 
-    a {
-      color: #007acc;
-      text-decoration: none;
-      word-break: break-word;
-    }
-    a:hover { text-decoration: underline; }
+    a{ color:var(--brand-blue); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-    /* Safe-area padding only for mobiles */
-    @media (max-width: 768px) {
-      body {
+    /* Mobile safe areas only on small screens */
+    @media (max-width: 768px){
+      body{
         padding:
           calc(env(safe-area-inset-top, 0) + 16px)
           16px
-          calc(env(safe-area-inset-bottom, 0) + 24px);
+          calc(env(safe-area-inset-bottom, 0) + 20px);
       }
+      main{ gap: calc(var(--rhythm) * 1.1); }
     }
 
-    /* Very narrow screens: adjust spacing */
-    @media (max-width: 360px) {
-      .company-name { line-height: 1.1; }
-      .tagline { margin: 10px 0 28px; }
+    /* Very narrow phones */
+    @media (max-width:360px){
+      .company-name{ line-height:1.08; }
     }
   </style>
   <script>
-    // Disable right-click on all inline "i" logos
-    document.addEventListener("DOMContentLoaded", function() {
-      document.querySelectorAll("img.i-logo").forEach(img => {
-        img.addEventListener("contextmenu", e => e.preventDefault());
-      });
+    // Disable right-click on inline “i” logos (casual save prevention)
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img.i-logo').forEach(img =>
+        img.addEventListener('contextmenu', e => e.preventDefault())
+      );
     });
   </script>
 </head>
 <body>
-
   <main>
     <div class="company-name">
-      s<img src="i.png" alt="i logo" class="i-logo">ngular<br>
-      mach<img src="i.png" alt="i logo" class="i-logo">nes
+      s<img src="i.svg" alt="i logo" class="i-logo">ngular<br>
+      mach<img src="i.svg" alt="i logo" class="i-logo">nes
     </div>
 
-    <div class="tagline">Engineering re-engineered</div>
+    <div class="tagline">engineering, re-engineered</div>
 
     <p class="contact">
       <a href="mailto:contact@singularmachines.co.uk">contact@singularmachines.co.uk</a>
     </p>
   </main>
-
 </body>
 </html>

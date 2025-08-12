@@ -3,48 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Company Landing Page</title>
+  <title>Singular Machines</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fafafa;
+      background-color: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
-      color: #333;
+      color: #000;
     }
-    img.logo {
-      max-width: 200px;
-      height: auto;
-      margin-bottom: 20px;
+    .company-name {
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 1.2;
     }
-    h1 {
-      margin: 0;
-      font-size: 2rem;
+    .company-name img.i-logo {
+      height: 1em;
+      vertical-align: middle;
     }
-    p.tagline {
+    .tagline {
+      font-style: italic;
+      color: #555;
       font-size: 1.2rem;
-      color: #666;
-      margin: 10px 0 30px;
+      margin-top: 10px;
+      margin-bottom: 30px;
     }
-    a.email {
+    p.contact {
       font-size: 1rem;
+      margin: 5px 0;
+    }
+    a {
       color: #007acc;
       text-decoration: none;
     }
-    a.email:hover {
+    a:hover {
       text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <img src="i.png" alt="Company Logo" class="logo">
-  <h1>Singular Machines</h1>
-  <p class="tagline">Engineering Re-Engineered</p>
-  <p>Contact: <a class="email" href="mailto:james@singularmachines.co.uk">james@singularmachines.com</a></p>
+
+  <div class="company-name">
+    s<img src="i.png" alt="i logo" class="i-logo">ngular
+    <br>
+    mach<img src="i.png" alt="i logo" class="i-logo">nes
+  </div>
+
+  <div class="tagline">Engineering re-engineered</div>
+
+  <p class="contact">Contact: <a href="mailto:info@singularmachines.com">info@singularmachines.com</a></p>
+  <p class="contact">Phone: +44 1234 567890</p>
+
 </body>
 </html>

@@ -8,7 +8,6 @@
     :root {
       /* Fluid sizes (min, preferred vw-based, max) */
       --size-name: clamp(2.4rem, 10vw, 7rem);
-      --size-i:    clamp(1.6rem, 7.5vw, 5.25rem); /* height for the i.png */
       --size-tag:  clamp(1rem, 4.5vw, 2.5rem);
       --size-ctc:  clamp(0.95rem, 3.2vw, 1.5rem);
     }
@@ -44,9 +43,9 @@
       letter-spacing: 0.01em;
     }
 
-    /* Inline “i” image tuned to text size */
+    /* Inline “i” image tied directly to text size */
     .company-name img.i-logo {
-      height: var(--size-i);
+      height: 0.75em; /* always 75% of text height */
       width: auto;
       vertical-align: -0.12em;
       user-select: none;

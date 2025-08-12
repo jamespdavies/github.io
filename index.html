@@ -2,62 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Singular Machines</title>
   <style>
-    body {
+    :root {
+      /* Fluid sizes (min, preferred vw-based, max) */
+      --size-name: clamp(2.4rem, 10vw, 7rem);
+      --size-i:    clamp(1.6rem, 7.5vw, 5.25rem); /* height for the i.png */
+      --size-tag:  clamp(1rem, 4.5vw, 2.5rem);
+      --size-ctc:  clamp(0.95rem, 3.2vw, 1.5rem);
+    }
+
+    html, body {
+      height: 100%;
       margin: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background-color: #ffffff;
+      background: #fff;
+      color: #000;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       text-align: center;
-      color: #000;
+      overflow: hidden; /* Stops tiny overflow from showing scrollbars */
+      padding: 0 16px; /* Horizontal breathing room */
     }
+
+    /* Prevent selection on branding */
+    .company-name, .tagline {
+      user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+
     .company-name {
-      font-size: 6rem;
-      font-weight: bold;
-      line-height: 1.2;
+      font-size: var(--size-name);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
     }
+
+    /* Inline “i” image tuned to text size */
     .company-name img.i-logo {
-      height: 3em;
-      vertical-align: middle;
+      height: var(--size-i);
+      width: auto;
+      vertical-align: -0.12em;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
     }
+
     .tagline {
+      margin: 14px 0 36px;
       font-style: italic;
       color: #555;
-      font-size: 3rem;
-      margin-top: 10px;
-      margin-bottom: 30px;
+      font-size: var(--size-tag);
     }
+
     p.contact {
-      font-size: 1rem;
-      margin: 5px 0;
+      margin: 6px 0 0;
+      font-size: var(--size-ctc);
     }
+
     a {
       color: #007acc;
       text-decoration: none;
+      word-break: break-word;
     }
-    a:hover {
-      text-decoration: underline;
+    a:hover { text-decoration: underline; }
+
+    /* Safe-area padding only for mobiles */
+    @media (max-width: 768px) {
+      body {
+        padding:
+          calc(env(safe-area-inset-top, 0) + 16px)
+          16px
+          calc(env(safe-area-inset-bottom, 0) + 24px);
+      }
+    }
+
+    /* Very narrow screens: adjust spacing */
+    @media (max-width: 360px) {
+      .company-name { line-height: 1.1; }
+      .tagline { margin: 10px 0 28px; }
     }
   </style>
+  <script>
+    // Disable right-click on all inline "i" logos
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("img.i-logo").forEach(img => {
+        img.addEventListener("contextmenu", e => e.preventDefault());
+      });
+    });
+  </script>
 </head>
 <body>
 
-  <div class="company-name">
-    s<img src="i.png" alt="i logo" class="i-logo">ngular
-    <br>
-    mach<img src="i.png" alt="i logo" class="i-logo">nes
-  </div>
+  <main>
+    <div class="company-name">
+      s<img src="i.png" alt="i logo" class="i-logo">ngular<br>
+      mach<img src="i.png" alt="i logo" class="i-logo">nes
+    </div>
 
-  <div class="tagline">Engineering re-engineered</div>
+    <div class="tagline">Engineering re-engineered</div>
 
-  <p class="contact">Contact: <a href="mailto:contact@singularmachines.co.uk">contact@singularmachines.co.uk</a></p>
-  <p class="contact">Phone: +44 1234 567890</p>
+    <p class="contact">
+      <a href="mailto:contact@singularmachines.co.uk">contact@singularmachines.co.uk</a>
+    </p>
+  </main>
 
 </body>
 </html>
